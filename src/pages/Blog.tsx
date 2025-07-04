@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Calendar, User, Tag } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 import Navbar from '../components/ui/navbar';
 import Footer from '../components/sections/footer';
 
@@ -16,15 +18,60 @@ interface BlogPost {
 }
 
 const Blog = () => {
+  const navigate = useNavigate();
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
   useEffect(() => {
-    // Load blogs from JSON file
-    fetch('/src/data/blogs.json')
-      .then(response => response.json())
-      .then(data => setBlogs(data.blogs))
-      .catch(error => console.error('Error loading blogs:', error));
+    const fetchBlogs = async () => {
+      try {
+        // First get blog posts
+        const { data: blogData, error: blogError } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .order('publish_date', { ascending: false });
+
+        if (blogError) {
+          console.error('Error fetching blogs:', blogError);
+          return;
+        }
+
+        // Get author profiles
+        const authorIds = blogData.map(post => post.author_id);
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('user_id, display_name')
+          .in('user_id', authorIds);
+
+        if (profileError) {
+          console.error('Error fetching profiles:', profileError);
+          return;
+        }
+
+        // Create a map of user_id to display_name
+        const profileMap = new Map(profileData.map(profile => [profile.user_id, profile.display_name]));
+
+        // Transform data to match the expected interface
+        const transformedBlogs = blogData.map(post => ({
+          id: post.id,
+          title: post.title,
+          slug: post.slug,
+          excerpt: post.excerpt || '',
+          author: profileMap.get(post.author_id) || 'Unknown Author',
+          publishDate: post.publish_date,
+          tags: post.tags || [],
+          featured: post.featured,
+          imageUrl: post.hero_image_url || '/api/placeholder/800/400'
+        }));
+
+        setBlogs(transformedBlogs);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchBlogs();
   }, []);
 
   const allTags = ['all', ...Array.from(new Set(blogs.flatMap(blog => blog.tags)))];
@@ -81,8 +128,20 @@ const Blog = () => {
             <h2 className="text-2xl font-bold mb-8">Featured Posts</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredBlogs.map(blog => (
-                <article key={blog.id} className="glass-card group hover:scale-105 transition-all duration-300">
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg mb-4"></div>
+                <article 
+                  key={blog.id} 
+                  className="glass-card group hover:scale-105 transition-all duration-300 cursor-pointer"
+                  onClick={() => navigate(`/blog/${blog.slug}`)}
+                >
+                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg mb-4 overflow-hidden">
+                    {blog.imageUrl && blog.imageUrl !== '/api/placeholder/800/400' && (
+                      <img 
+                        src={blog.imageUrl} 
+                        alt={blog.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
                   <div className="flex items-center text-sm text-muted-foreground mb-3">
                     <User className="w-4 h-4 mr-1" />
                     <span className="mr-4">{blog.author}</span>
@@ -119,8 +178,20 @@ const Blog = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularBlogs.map(blog => (
-              <article key={blog.id} className="glass-card group hover:scale-105 transition-all duration-300">
-                <div className="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 rounded-lg mb-4"></div>
+              <article 
+                key={blog.id} 
+                className="glass-card group hover:scale-105 transition-all duration-300 cursor-pointer"
+                onClick={() => navigate(`/blog/${blog.slug}`)}
+              >
+                <div className="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 rounded-lg mb-4 overflow-hidden">
+                  {blog.imageUrl && blog.imageUrl !== '/api/placeholder/800/400' && (
+                    <img 
+                      src={blog.imageUrl} 
+                      alt={blog.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
                 <div className="flex items-center text-sm text-muted-foreground mb-3">
                   <User className="w-4 h-4 mr-1" />
                   <span className="mr-4">{blog.author}</span>
