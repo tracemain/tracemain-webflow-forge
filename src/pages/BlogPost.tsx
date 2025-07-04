@@ -132,6 +132,7 @@ const BlogPost = () => {
             </pre>
           );
         case 'image':
+        case 'simpleImage':
           return (
             <div key={index} className="mb-4">
               <img 
@@ -139,6 +140,23 @@ const BlogPost = () => {
                 alt={block.data.caption || ''} 
                 className="w-full rounded-lg"
               />
+              {block.data.caption && (
+                <p className="text-sm text-muted-foreground mt-2 text-center italic">
+                  {block.data.caption}
+                </p>
+              )}
+            </div>
+          );
+        case 'embed':
+          return (
+            <div key={index} className="mb-4">
+              <div className="aspect-video">
+                <iframe
+                  src={block.data.embed}
+                  className="w-full h-full rounded-lg"
+                  allowFullScreen
+                />
+              </div>
               {block.data.caption && (
                 <p className="text-sm text-muted-foreground mt-2 text-center italic">
                   {block.data.caption}
