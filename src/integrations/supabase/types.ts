@@ -57,6 +57,75 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_submissions: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          read: boolean | null
+          subject: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          read?: boolean | null
+          subject?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          read?: boolean | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      content: {
+        Row: {
+          about: Json
+          contact: Json
+          created_at: string
+          hero: Json
+          id: string
+          seo: Json
+          services: Json
+          updated_at: string
+        }
+        Insert: {
+          about?: Json
+          contact?: Json
+          created_at?: string
+          hero?: Json
+          id?: string
+          seo?: Json
+          services?: Json
+          updated_at?: string
+        }
+        Update: {
+          about?: Json
+          contact?: Json
+          created_at?: string
+          hero?: Json
+          id?: string
+          seo?: Json
+          services?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           approved: boolean | null

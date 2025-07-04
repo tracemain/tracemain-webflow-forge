@@ -8,9 +8,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { LogOut, Save, User, FileText, Settings, Users } from 'lucide-react';
+import { LogOut, Save, User, FileText, Settings, Users, MessageSquare, Globe } from 'lucide-react';
 import BlogManagement from '@/components/admin/BlogManagement';
 import UserManagement from '@/components/admin/UserManagement';
+import ContactSubmissions from '@/components/admin/ContactSubmissions';
 
 interface ContentData {
   id?: string;
@@ -139,11 +140,43 @@ const AdminV2 = () => {
     fetchUserProfile();
   }, [user]);
 
+  useEffect(() => {
+    const fetchContent = async () => {
+      const { data } = await supabase
+        .from('content')
+        .select('*')
+        .single();
+      
+      if (data) {
+        setContent(data as unknown as ContentData);
+      }
+    };
+
+    if (isApproved) {
+      fetchContent();
+    }
+  }, [isApproved]);
+
   const handleSave = async () => {
-    toast({
-      title: "Settings Saved",
-      description: "Your settings have been saved locally.",
-    });
+    try {
+      const { error } = await supabase
+        .from('content')
+        .upsert([content]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Content Saved",
+        description: "Your changes have been saved successfully.",
+      });
+    } catch (error) {
+      console.error('Error saving content:', error);
+      toast({
+        title: "Error",
+        description: "Failed to save content. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleSignOut = async () => {
@@ -194,15 +227,23 @@ const AdminV2 = () => {
           </Button>
         </div>
 
-        <Tabs defaultValue="blog" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+        <Tabs defaultValue="content" className="w-full">
+          <TabsList className="grid w-full grid-cols-5">
+            <TabsTrigger value="content">
+              <Globe className="w-4 h-4 mr-2" />
+              Content
+            </TabsTrigger>
             <TabsTrigger value="blog">
               <FileText className="w-4 h-4 mr-2" />
-              Blog Management
+              Blog
+            </TabsTrigger>
+            <TabsTrigger value="contact">
+              <MessageSquare className="w-4 h-4 mr-2" />
+              Contact
             </TabsTrigger>
             <TabsTrigger value="users">
               <Users className="w-4 h-4 mr-2" />
-              User Management
+              Users
             </TabsTrigger>
             <TabsTrigger value="settings">
               <Settings className="w-4 h-4 mr-2" />
@@ -210,8 +251,178 @@ const AdminV2 = () => {
             </TabsTrigger>
           </TabsList>
 
+          <TabsContent value="content" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Website Content Management</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Hero Section */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Hero Section</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="hero-title">Title</Label>
+                      <Input
+                        id="hero-title"
+                        value={content.hero.title}
+                        onChange={(e) => setContent({
+                          ...content,
+                          hero: { ...content.hero, title: e.target.value }
+                        })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="hero-subtitle">Subtitle</Label>
+                      <Input
+                        id="hero-subtitle"
+                        value={content.hero.subtitle}
+                        onChange={(e) => setContent({
+                          ...content,
+                          hero: { ...content.hero, subtitle: e.target.value }
+                        })}
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="hero-description">Description</Label>
+                    <Textarea
+                      id="hero-description"
+                      value={content.hero.description}
+                      onChange={(e) => setContent({
+                        ...content,
+                        hero: { ...content.hero, description: e.target.value }
+                      })}
+                      rows={3}
+                    />
+                  </div>
+                </div>
+
+                {/* Services Section */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Services Section</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="services-title">Title</Label>
+                      <Input
+                        id="services-title"
+                        value={content.services.title}
+                        onChange={(e) => setContent({
+                          ...content,
+                          services: { ...content.services, title: e.target.value }
+                        })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="services-subtitle">Subtitle</Label>
+                      <Input
+                        id="services-subtitle"
+                        value={content.services.subtitle}
+                        onChange={(e) => setContent({
+                          ...content,
+                          services: { ...content.services, subtitle: e.target.value }
+                        })}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* About Section */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">About Section</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="about-title">Title</Label>
+                      <Input
+                        id="about-title"
+                        value={content.about.title}
+                        onChange={(e) => setContent({
+                          ...content,
+                          about: { ...content.about, title: e.target.value }
+                        })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="about-subtitle">Subtitle</Label>
+                      <Input
+                        id="about-subtitle"
+                        value={content.about.subtitle}
+                        onChange={(e) => setContent({
+                          ...content,
+                          about: { ...content.about, subtitle: e.target.value }
+                        })}
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="about-description">Description</Label>
+                    <Textarea
+                      id="about-description"
+                      value={content.about.description}
+                      onChange={(e) => setContent({
+                        ...content,
+                        about: { ...content.about, description: e.target.value }
+                      })}
+                      rows={3}
+                    />
+                  </div>
+                </div>
+
+                {/* Contact Section */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Contact Section</h3>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-email">Email</Label>
+                      <Input
+                        id="contact-email"
+                        type="email"
+                        value={content.contact.email}
+                        onChange={(e) => setContent({
+                          ...content,
+                          contact: { ...content.contact, email: e.target.value }
+                        })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-phone">Phone</Label>
+                      <Input
+                        id="contact-phone"
+                        value={content.contact.phone}
+                        onChange={(e) => setContent({
+                          ...content,
+                          contact: { ...content.contact, phone: e.target.value }
+                        })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-address">Address</Label>
+                      <Input
+                        id="contact-address"
+                        value={content.contact.address}
+                        onChange={(e) => setContent({
+                          ...content,
+                          contact: { ...content.contact, address: e.target.value }
+                        })}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <Button onClick={handleSave} className="w-full">
+                  <Save className="w-4 h-4 mr-2" />
+                  Save Changes
+                </Button>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
           <TabsContent value="blog" className="space-y-6">
             <BlogManagement />
+          </TabsContent>
+
+          <TabsContent value="contact" className="space-y-6">
+            <ContactSubmissions />
           </TabsContent>
 
           <TabsContent value="users" className="space-y-6">
@@ -221,26 +432,49 @@ const AdminV2 = () => {
           <TabsContent value="settings" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Website Settings</CardTitle>
+                <CardTitle>SEO Settings</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-muted-foreground">
-                  Configure your website settings and preferences here.
-                </p>
                 <div className="space-y-2">
-                  <Label htmlFor="site-name">Site Name</Label>
+                  <Label htmlFor="seo-title">Meta Title</Label>
                   <Input
-                    id="site-name"
-                    value={content.hero.title}
+                    id="seo-title"
+                    value={content.seo.title}
                     onChange={(e) => setContent({
                       ...content,
-                      hero: { ...content.hero, title: e.target.value }
+                      seo: { ...content.seo, title: e.target.value }
+                    })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="seo-description">Meta Description</Label>
+                  <Textarea
+                    id="seo-description"
+                    value={content.seo.description}
+                    onChange={(e) => setContent({
+                      ...content,
+                      seo: { ...content.seo, description: e.target.value }
+                    })}
+                    rows={3}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="seo-keywords">Keywords (comma-separated)</Label>
+                  <Input
+                    id="seo-keywords"
+                    value={content.seo.keywords.join(', ')}
+                    onChange={(e) => setContent({
+                      ...content,
+                      seo: { 
+                        ...content.seo, 
+                        keywords: e.target.value.split(',').map(k => k.trim()).filter(k => k)
+                      }
                     })}
                   />
                 </div>
                 <Button onClick={handleSave}>
                   <Save className="w-4 h-4 mr-2" />
-                  Save Settings
+                  Save SEO Settings
                 </Button>
               </CardContent>
             </Card>
