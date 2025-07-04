@@ -1,0 +1,40 @@
+{
+  "blogs": [
+    {
+      "id": "1",
+      "title": "The Future of AI-Powered Agentic Systems",
+      "slug": "future-ai-agentic-systems",
+      "excerpt": "Exploring how autonomous AI agents are revolutionizing business processes and decision-making across industries.",
+      "content": "blog-1.md",
+      "author": "Tracemain Team",
+      "publishDate": "2024-01-15",
+      "tags": ["AI", "Agents", "Automation", "Future Tech"],
+      "featured": true,
+      "imageUrl": "/api/placeholder/800/400"
+    },
+    {
+      "id": "2",
+      "title": "Building Scalable Data Science Platforms",
+      "slug": "building-scalable-data-science-platforms",
+      "excerpt": "Best practices for creating robust data science infrastructure that grows with your business needs.",
+      "content": "blog-2.md",
+      "author": "Tracemain Team",
+      "publishDate": "2024-01-10",
+      "tags": ["Data Science", "Architecture", "Scalability", "ML"],
+      "featured": false,
+      "imageUrl": "/api/placeholder/800/400"
+    },
+    {
+      "id": "3",
+      "title": "Enterprise AI Implementation: A Complete Guide",
+      "slug": "enterprise-ai-implementation-guide",
+      "excerpt": "A comprehensive guide to successfully implementing AI solutions in enterprise environments.",
+      "content": "blog-3.md",
+      "author": "Tracemain Team",
+      "publishDate": "2024-01-05",
+      "tags": ["Enterprise", "AI Implementation", "Strategy", "Guide"],
+      "featured": false,
+      "imageUrl": "/api/placeholder/800/400"
+    }
+  ]
+}

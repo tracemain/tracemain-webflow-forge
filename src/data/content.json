@@ -1,0 +1,143 @@
+{
+  "hero": {
+    "badge": "AI-Powered Solutions",
+    "title": "Build Next-Gen AI Applications",
+    "subtitle": "From LLM-powered agentic systems to advanced data science platforms, we help entrepreneurs and enterprises build cutting-edge AI solutions.",
+    "primaryButton": "Start Your Project",
+    "secondaryButton": "View Our Work",
+    "stats": [
+      {
+        "number": "100+",
+        "label": "AI Projects Delivered"
+      },
+      {
+        "number": "50+",
+        "label": "Enterprise Clients"
+      },
+      {
+        "number": "24/7",
+        "label": "Support & Maintenance"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive AI solutions designed to transform your business and accelerate innovation",
+    "items": [
+      {
+        "title": "LLM-Powered Agentic Systems",
+        "description": "Build intelligent agents that can reason, plan, and execute complex tasks autonomously using advanced language models.",
+        "features": [
+          "Custom AI Agents",
+          "Multi-Agent Orchestration",
+          "RAG Implementation",
+          "Fine-tuning Services"
+        ]
+      },
+      {
+        "title": "Data Science Platforms",
+        "description": "Create comprehensive data science solutions that transform raw data into actionable business insights.",
+        "features": [
+          "ML Pipeline Development",
+          "Predictive Analytics",
+          "Real-time Processing",
+          "Data Visualization"
+        ]
+      },
+      {
+        "title": "AI-First Applications",
+        "description": "Develop modern applications with AI at their core, designed for scalability and performance.",
+        "features": [
+          "Intelligent Automation",
+          "Natural Language Interfaces",
+          "Computer Vision",
+          "Recommendation Systems"
+        ]
+      },
+      {
+        "title": "Enterprise AI Solutions",
+        "description": "Secure, scalable AI implementations tailored for enterprise environments and compliance needs.",
+        "features": [
+          "Security-First Design",
+          "Compliance Ready",
+          "Enterprise Integration",
+          "Custom Deployment"
+        ]
+      },
+      {
+        "title": "AI Development Consulting",
+        "description": "Strategic guidance and technical expertise to help you navigate the AI landscape effectively.",
+        "features": [
+          "Technology Assessment",
+          "Architecture Design",
+          "Team Training",
+          "Best Practices"
+        ]
+      },
+      {
+        "title": "End-to-End Solutions",
+        "description": "Complete project lifecycle management from ideation to deployment and ongoing support.",
+        "features": [
+          "Project Management",
+          "Quality Assurance",
+          "Deployment Support",
+          "Maintenance & Updates"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "About Tracemain",
+    "description": [
+      "Tracemain is a pioneering AI development company that specializes in creating next-generation artificial intelligence solutions. We help companies, entrepreneurs, and builders transform their ideas into powerful AI-driven applications.",
+      "Our team of experienced AI engineers and data scientists work closely with clients to deliver end-to-end solutions that drive real business value. From concept to deployment, we ensure your AI initiatives succeed."
+    ],
+    "achievements": [
+      "5+ Years in AI Development",
+      "Certified AI Specialists",
+      "Enterprise-Grade Security",
+      "Global Client Base",
+      "99.9% Uptime Guarantee",
+      "Continuous Innovation"
+    ],
+    "values": [
+      {
+        "title": "Mission-Driven",
+        "description": "We exist to democratize AI technology and make it accessible to businesses of all sizes."
+      },
+      {
+        "title": "Innovation First",
+        "description": "We stay at the forefront of AI research and development to deliver cutting-edge solutions."
+      },
+      {
+        "title": "Client-Centric",
+        "description": "Your success is our success. We work as an extension of your team to achieve your goals."
+      },
+      {
+        "title": "Quality Focused",
+        "description": "We deliver robust, scalable solutions that stand the test of time and scale with your business."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to transform your business with AI? Let's discuss your project and explore how we can help you succeed.",
+    "info": [
+      {
+        "title": "Email Us",
+        "value": "hello@tracemain.com",
+        "href": "mailto:hello@tracemain.com"
+      },
+      {
+        "title": "Call Us",
+        "value": "+1 (555) 123-4567",
+        "href": "tel:+15551234567"
+      },
+      {
+        "title": "Visit Us",
+        "value": "San Francisco, CA",
+        "href": "#"
+      }
+    ]
+  }
+}
