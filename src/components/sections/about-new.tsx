@@ -4,24 +4,13 @@ const About = () => {
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center animate-on-scroll">
           
-          {/* Headline */}
-          <h2 className="text-display-md mb-8">
-            Building at the Cutting Edge of the{' '}
-            <span className="text-accent">AI Application Layer</span>
+          <h2 className="text-large mb-8">
+            AI Application Layer
           </h2>
 
-          {/* Body Content */}
-          <div className="space-y-8 text-body-lg text-left max-w-3xl mx-auto">
-            <p>
-              At Tracemain, we believe that the future of AI lies not in larger models—but in 
-              smarter, more contextual, and deployable systems. We focus on real-world outcomes: 
-              where AI doesn't just exist, it works.
-            </p>
-            
-            <p>
-              We develop in-house AI products, collaborate with visionary founders, and build 
-              foundational frameworks for prompt management, agentic intelligence, and reliable 
-              deployment—especially where cloud infra isn't always viable.
+          <div className="max-w-2xl mx-auto">
+            <p className="text-body text-muted-foreground">
+              We focus on making AI systems more contextual, deployable, and effective in real-world scenarios.
             </p>
           </div>
         </div>

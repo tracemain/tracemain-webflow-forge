@@ -6,7 +6,7 @@ import About from '../components/sections/about-new';
 import Labs from '../components/sections/labs';
 import UseCases from '../components/sections/use-cases';
 import BlogPreview from '../components/sections/blog-preview';
-import Contact from '../components/sections/contact';
+import Contact from '../components/sections/contact-simple';
 import Footer from '../components/sections/footer-new';
 
 const Index = () => {
