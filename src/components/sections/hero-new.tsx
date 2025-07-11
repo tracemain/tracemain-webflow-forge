@@ -1,41 +1,31 @@
-import { ArrowRight, MessageCircle } from 'lucide-react';
-import { Button } from '../ui/button';
-
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center pt-20">
-      <div className="container-custom">
-        <div className="max-w-4xl mx-auto text-center animate-on-scroll">
-          
-          {/* Main Headline */}
-          <h1 className="text-display-lg mb-8">
-            AI, Built for the{' '}
-            <span className="text-accent">Real World</span>
-          </h1>
+      <div className="container-simple text-center">
+        
+        {/* Dead simple giant text like thinkingmachines.ai */}
+        <h1 className="text-huge mb-16 leading-none">
+          TRACEMAIN
+        </h1>
 
-          {/* Subheadline */}
-          <p className="text-body-lg mb-12 max-w-3xl mx-auto">
-            We are Tracemain — an AI lab shaping the next wave of application-layer intelligence. 
+        {/* Simple description */}
+        <div className="max-w-2xl mx-auto space-y-8">
+          <p className="text-body text-foreground">
+            Tracemain is an AI lab shaping the next wave of application-layer intelligence. 
             We build, fine-tune, and deploy real-world AI systems alongside ambitious founders and internal R&D.
           </p>
+          
+          <p className="text-body text-muted-foreground">
+            While AI capabilities have advanced dramatically, key gaps remain. We focus on making 
+            AI systems more contextual, deployable, and effective in real-world scenarios.
+          </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-            <Button className="btn-primary group">
-              Explore Our Work
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button className="btn-secondary group">
-              <MessageCircle className="mr-2 w-4 h-4" />
-              Talk to Us
-            </Button>
-          </div>
-
-          {/* Subtle indicator */}
-          <div className="text-muted-foreground text-sm font-medium">
-            Scroll to explore
-          </div>
+          <p className="text-body text-muted-foreground">
+            We are scientists, engineers, and builders creating the next generation of 
+            AI applications that actually work.
+          </p>
         </div>
+
       </div>
     </section>
   );
