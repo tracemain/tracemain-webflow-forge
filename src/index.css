@@ -2,59 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tracemain Design System - Dark Glassmorphic Theme */
+/* Tracemain Design System - Clean Minimal Theme */
 
 @layer base {
   :root {
-    /* Dark theme colors */
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Clean minimal colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 11%;
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
 
-    /* Primary - Electric Blue */
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 98%;
-    --primary-glow: 217 91% 70%;
+    /* Primary - Subtle blue accent */
+    --primary: 220 13% 69%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Purple */
-    --secondary: 262 83% 58%;
-    --secondary-foreground: 0 0% 98%;
+    /* Secondary - Light grey */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 11%;
 
-    /* Muted - Dark gray */
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    /* Muted - Light greys */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    /* Accent - Cyan */
-    --accent: 189 94% 43%;
-    --accent-foreground: 0 0% 98%;
+    /* Accent - Signal orange for highlights */
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 217 91% 60%;
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 220 13% 69%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Glassmorphic effects */
-    --glass-bg: 240 10% 3.9% / 0.8;
-    --glass-border: 0 0% 100% / 0.1;
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* Typography */
+    --font-primary: 'Inter', system-ui, sans-serif;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
-    --gradient-glow: radial-gradient(circle, hsl(var(--primary-glow) / 0.3) 0%, transparent 70%);
+    /* Spacing & Layout */
+    --section-padding: 6rem 0;
+    --container-padding: 1.5rem;
+    --max-width: 1280px;
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-glass: backdrop-filter 0.3s ease-in-out;
+    --transition-fast: all 0.15s ease-out;
 
     --sidebar-background: 240 10% 3.9%;
     --sidebar-foreground: 0 0% 98%;
@@ -112,59 +110,79 @@
 
   body {
     @apply bg-background text-foreground;
-    background-image: 
-      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.1) 0%, transparent 50%);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
-  /* Glassmorphic utilities */
-  .glass {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* Layout utilities */
+  .container-custom {
+    @apply mx-auto px-6 sm:px-8 lg:px-12 xl:px-16;
+    max-width: var(--max-width);
   }
   
-  .glass-card {
-    @apply glass rounded-2xl p-6;
-  }
-  
-  .glass-button {
-    @apply glass rounded-lg px-6 py-3 transition-all duration-300 hover:bg-white/10 hover:scale-105;
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
   }
 
-  /* Gradient utilities */
-  .gradient-primary {
-    background: var(--gradient-primary);
+  /* Typography utilities */
+  .text-display-lg {
+    @apply text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-semibold tracking-tight;
   }
   
-  .gradient-accent {
-    background: var(--gradient-accent);
+  .text-display-md {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-display font-semibold tracking-tight;
   }
   
-  .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .text-display-sm {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-display font-semibold tracking-tight;
+  }
+  
+  .text-body-lg {
+    @apply text-lg sm:text-xl text-muted-foreground leading-relaxed;
   }
 
-  /* Glow effects */
-  .glow-primary {
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.3);
+  /* Clean button styles */
+  .btn-primary {
+    @apply bg-foreground text-background hover:bg-foreground/90 px-8 py-4 rounded-full font-medium transition-all duration-200 hover:scale-[1.02];
   }
   
-  .glow-accent {
-    box-shadow: 0 0 40px hsl(var(--accent) / 0.3);
+  .btn-secondary {
+    @apply bg-transparent text-foreground border border-border hover:bg-muted px-8 py-4 rounded-full font-medium transition-all duration-200 hover:scale-[1.02];
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-4 rounded-full font-medium transition-all duration-200 hover:scale-[1.02];
   }
 
-  /* Animations */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  /* Card styles */
+  .card-minimal {
+    @apply bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:border-border/60;
+  }
+
+  /* Divider */
+  .divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+
+  /* Scroll animations */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
   
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+  .animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
