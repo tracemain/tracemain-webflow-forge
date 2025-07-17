@@ -234,13 +234,20 @@ const BlogPost = () => {
               <span>{new Date(post.publish_date).toLocaleDateString()}</span>
             </div>
 
+            {/* Tag chips, splitting if needed */}
             <div className="flex flex-wrap gap-2 mb-6">
-              {post.tags.map(tag => (
+              {(
+                Array.isArray(post.tags) &&
+                post.tags.length === 1 &&
+                typeof post.tags[0] === 'string' &&
+                post.tags[0].includes(',')
+                  ? post.tags[0].split(',').map(t => t.trim())
+                  : post.tags
+              ).map(tag => (
                 <span 
                   key={tag}
-                  className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
+                  className="inline-flex items-center px-4 py-1 bg-primary/10 text-primary font-semibold text-xs rounded-full border border-primary/20 shadow-sm hover:bg-primary/20 transition-colors cursor-pointer"
                 >
-                  <Tag className="w-3 h-3 mr-1" />
                   {tag}
                 </span>
               ))}

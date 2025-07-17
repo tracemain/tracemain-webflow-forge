@@ -9,7 +9,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
-import AdminV2 from "./pages/AdminV2";
+import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
@@ -29,9 +29,9 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/admin" element={
-                <ProtectedRoute>
-                  <AdminV2 />
-                </ProtectedRoute>
+                // <ProtectedRoute>
+                  <Admin />
+                // </ProtectedRoute>
               } />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

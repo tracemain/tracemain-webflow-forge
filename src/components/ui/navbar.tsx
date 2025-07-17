@@ -32,7 +32,7 @@ const Navbar = () => {
           </div>
 
           {/* Minimal navigation - desktop only */}
-          <div className="hidden md:flex items-center space-x-8 text-sm">
+          {/* <div className="hidden md:flex items-center space-x-8 text-sm">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -42,22 +42,22 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-          </div>
+          </div> */}
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-foreground p-1"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
+      {/* {isOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="container-simple py-4 space-y-4">
             {navItems.map((item) => (
@@ -72,7 +72,7 @@ const Navbar = () => {
             ))}
           </div>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };
