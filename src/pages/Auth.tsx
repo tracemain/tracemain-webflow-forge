@@ -110,7 +110,7 @@ const Auth = () => {
         <CardHeader className="text-center">
           <div className="flex items-center justify-center mb-4">
             <img 
-              src="/lovable-uploads/1861a34a-e307-498c-a038-bb4d7d010a16.png" 
+              src="/logo.png" 
               alt="Tracemain" 
               className="h-10 w-auto"
             />

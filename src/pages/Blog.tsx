@@ -69,9 +69,14 @@ const Blog = () => {
       <section className="simple-section">
         <div className="container-simple">
           <div className="flex justify-between items-start mb-16">
-            <h1 className="text-title">
+          <img
+            src="/logo_word.png"
+            alt="Logo word"
+            style={{ maxWidth: '20vw', minWidth: '120px' }}
+          />
+            {/* <h1 className="text-title">
               <a href="/" className="simple-link">TRACEMAIN</a>
-            </h1>
+            </h1> */}
             <h2 className="text-large">Writing</h2>
           </div>
           

@@ -34,11 +34,11 @@ const Index = () => {
       <SEO />
       <div className="min-h-screen bg-background">
         <Hero />
-        <About />
-        <Labs />
+        {/* <About /> */}
+        {/* <Labs />
         <UseCases />
-        <BlogPreview />
-        <Contact />
+        <BlogPreview /> */}
+        {/* <Contact /> */}
         <Footer />
       </div>
     </>
