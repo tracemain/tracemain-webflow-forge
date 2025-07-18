@@ -28,7 +28,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Simple text logo */}
           <div className="text-sm font-medium text-foreground">
-            Tracemain
+          <a href="/">
+            <img
+              src="/logo_word.png"
+              alt="Tracemain Logo"
+              className="h-8 w-auto"
+            />
+          </a>
           </div>
 
           {/* Minimal navigation - desktop only */}

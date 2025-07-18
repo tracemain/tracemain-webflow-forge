@@ -195,7 +195,26 @@ const Admin = () => {
     );
   }
 
-  if (!isApproved) {
+  // Check if user is authenticated first
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center max-w-md">
+          <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
+          <p className="text-muted-foreground mb-6">
+            Please sign in to access the admin panel.
+          </p>
+          <Button onClick={() => window.location.href = '/auth'} variant="default">
+            Sign In
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // Then check approval - only approved users can access admin panel
+  const shouldCheckApproval = true; // Set to false to disable approval checking
+  if (shouldCheckApproval && !isApproved) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center max-w-md">
@@ -227,8 +246,8 @@ const Admin = () => {
           </Button>
         </div>
 
-        <Tabs defaultValue="content" className="w-full">
-          <TabsList className="grid w-full grid-cols-5">
+        <Tabs defaultValue="blog" className="w-full justify-center">
+          <TabsList className="grid w-full grid-cols-3">
             {/* <TabsTrigger value="content">
               <Globe className="w-4 h-4 mr-2" />
               Content
@@ -251,13 +270,13 @@ const Admin = () => {
             </TabsTrigger> */}
           </TabsList>
 
-          <TabsContent value="content" className="space-y-6">
+          {/* <TabsContent value="content" className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle>Website Content Management</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Hero Section */}
+                
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Hero Section</h3>
                   <div className="grid grid-cols-2 gap-4">
@@ -298,7 +317,7 @@ const Admin = () => {
                   </div>
                 </div>
 
-                {/* Services Section */}
+              
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Services Section</h3>
                   <div className="grid grid-cols-2 gap-4">
@@ -327,7 +346,7 @@ const Admin = () => {
                   </div>
                 </div>
 
-                {/* About Section */}
+               
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">About Section</h3>
                   <div className="grid grid-cols-2 gap-4">
@@ -368,7 +387,7 @@ const Admin = () => {
                   </div>
                 </div>
 
-                {/* Contact Section */}
+               
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Contact Section</h3>
                   <div className="grid grid-cols-3 gap-4">
@@ -415,7 +434,7 @@ const Admin = () => {
                 </Button>
               </CardContent>
             </Card>
-          </TabsContent>
+          </TabsContent> */}
 
           <TabsContent value="blog" className="space-y-6">
             <BlogManagement />
@@ -429,7 +448,7 @@ const Admin = () => {
             <UserManagement />
           </TabsContent>
 
-          <TabsContent value="settings" className="space-y-6">
+          {/* <TabsContent value="settings" className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle>SEO Settings</CardTitle>
@@ -478,7 +497,7 @@ const Admin = () => {
                 </Button>
               </CardContent>
             </Card>
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar, User, Tag, ArrowLeft } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import Navbar from '../components/ui/navbar';
-import Footer from '../components/sections/footer';
+import Footer from '../components/sections/footer-new';
 import { Button } from '@/components/ui/button';
 
 interface BlogPost {

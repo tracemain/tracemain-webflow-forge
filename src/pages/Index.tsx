@@ -9,14 +9,22 @@ const Index = () => {
           AI Systems for Complex Decisions.
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground text-center max-w-xl">
-          We build intelligent systems that reason, plan, and adapt—empowering people, not replacing them.
+          We build intelligent systems that reason, plan, and adapt. Empowering people, not replacing them.
         </p>
         <a
           href="/blog"
           className="group inline-flex items-center gap-1 text-black font-medium text-base sm:text-lg mt-2 hover:underline underline-offset-4 transition-colors"
           aria-label="Read our writing"
         >
-          Writing
+          Read Our Writing
+          <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a
+          href="/contact"
+          className="group inline-flex items-center gap-1 text-black font-medium text-base sm:text-lg mt-2 hover:underline underline-offset-4 transition-colors"
+          aria-label="Read our writing"
+        >
+          Contact Us
           <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
       </div>

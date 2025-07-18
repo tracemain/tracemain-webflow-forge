@@ -70,13 +70,25 @@ const Blog = () => {
     <div className="min-h-screen bg-muted flex flex-col">
       <section className="py-16 flex-1 flex flex-col items-center">
         <div className="w-full max-w-6xl px-4 mx-auto">
-          <div className="flex justify-between items-center mb-10">
-            <img
-              src="/logo_word.png"
-              alt="Logo word"
-              className="h-10 w-auto"
-            />
-            <h2 className="text-lg font-semibold text-foreground">Writing</h2>
+          <div className="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4 sm:gap-0">
+            <div className="flex justify-start items-center">
+              <a href="/">
+                <img
+                  src="/logo_word.png"
+                  alt="Logo word"
+                  className="h-8 sm:h-10 w-auto"
+                />
+              </a>
+            </div>
+            <div className="flex justify-center items-center gap-4 sm:gap-6">
+              {/* <h2 className="text-lg font-semibold text-foreground">Writing</h2> */}
+              <a href="/contact" className="simple-link text-sm sm:text-base">
+                Contact Us
+              </a>
+              <a href="https://cal.com/tracemain/30min" className="simple-link text-sm sm:text-base" target="_blank" rel="noopener noreferrer">
+                Schedule a Call
+              </a>
+            </div>
           </div>
           <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {blogs.map(blog => (
